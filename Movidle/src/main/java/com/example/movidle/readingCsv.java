@@ -11,6 +11,7 @@ public class readingCsv {
         String line ="";
         String[] values;
         String çakmatürk;
+        //asdasdasdas
 
 
         try {
