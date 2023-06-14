@@ -10,6 +10,8 @@ public class readingCsv {
         String path = "C:\\Users\\alias\\Desktop\\Proje\\imdb_top_250.csv";
         String line ="";
         String[] values;
+        String çakmatürk;
+        //asdasdasdas
 
 
         try {
