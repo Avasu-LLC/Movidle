@@ -20,6 +20,7 @@ public class HelloApplication extends Application {
         //zorter - 2023-06-06
         //zorter -
         //asdasdasdasdsad 213123132131
+        //get the controller
     }
 
     public static void main(String[] args) {
