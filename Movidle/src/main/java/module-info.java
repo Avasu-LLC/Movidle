@@ -3,6 +3,6 @@ module com.example.movidle {
     requires javafx.fxml;
 
 
-    opens com.example.movidle to javafx.fxml;
+    opens com.example.movidle.controller to javafx.fxml;
     exports com.example.movidle;
 }
