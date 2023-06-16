@@ -52,38 +52,6 @@ public class MovidleService implements MovieServiceImp {
 
     }
 
-    public void readMovieDemo(){
-         String path = "Movidle\\src\\main\\resources\\com\\example\\movidle\\files\\imdb_top_250.csv";
-        String line = "";
-        String[] values;
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            while ((line = br.readLine()) != null) {
-                if(line.startsWith("No")){
-                    continue;
-                }
-                values = line.split(";");
-
-                int no = Integer.parseInt(values[0]);
-                String title = values[1];
-                int year = Integer.parseInt(values[2]);
-                String genre = values[3];
-                String origin = values[4];
-                String director = values[5];
-                String star = values[6];
-                
-                this.movies.add(new Movie(title, year, genre, origin, director, star,no));
-
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-       
-    }
+   
 
 }
