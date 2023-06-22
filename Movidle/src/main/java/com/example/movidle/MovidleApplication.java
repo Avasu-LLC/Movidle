@@ -18,7 +18,7 @@ public class MovidleApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MovidleApplication.class.getResource("view/index.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 850, 700);
+        Scene scene = new Scene(fxmlLoader.load(), 1000, 700);
         //set disable resize
         stage.setResizable(false);
         stage.setTitle("Movidle");

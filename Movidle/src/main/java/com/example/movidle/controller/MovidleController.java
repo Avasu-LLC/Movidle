@@ -8,6 +8,8 @@ import com.example.movidle.service.MovidleService;
 import com.example.movidle.service.imp.MovidleServiceImp;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -59,7 +61,7 @@ public class MovidleController {
 
         HBox row = new HBox(10.0); // Yeni bir satır oluştur
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             Rectangle guessBox = new Rectangle(150, 150,equelOrNotList[i] == 1 ? Color.GREEN : Color.RED );
             Text text = null;
             switch(i){
@@ -82,6 +84,7 @@ public class MovidleController {
                     text = new Text(guessedMovie.getStar());
                     break;
                 
+                
             }
            // Text text = new Text(Integer.toString(this.rowHbox));
 
@@ -95,6 +98,8 @@ public class MovidleController {
         //if all guess is true then show the selected movie
         for(int i = 0; i < equelOrNotList.length; i++){
             if(equelOrNotList[i] == 1){
+                // Alert alert = new Alert(AlertType.INFORMATION);
+                
                 System.out.println("You Win");
                 return;
             }
