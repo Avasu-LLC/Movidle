@@ -1,13 +1,9 @@
 package com.example.movidle.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.example.movidle.model.Movie;
 import com.example.movidle.service.MovidleService;
 import com.example.movidle.service.imp.MovidleServiceImp;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -23,11 +19,12 @@ import javafx.scene.text.Text;
 
 public class MovidleController {
 
-    private MovidleService movidleService = new MovidleServiceImp();
+    private MovidleService movidleService ;
 
     private Movie selectedMovie;
 
     private int rowHbox = 0;
+
 
     @FXML
     private VBox guessContainer;
@@ -37,9 +34,7 @@ public class MovidleController {
 
     //constructor
     public MovidleController() {
-        
-     this.selectedMovie = movidleService.selectRandomMovie();
-     System.out.println("selectedMovie: " + selectedMovie.getTitle());
+     startGame();
 
     }
 
@@ -89,51 +84,60 @@ public class MovidleController {
                 
                 
             }
-           // Text text = new Text(Integer.toString(this.rowHbox));
+           
 
             StackPane stackPane = new StackPane(guessBox,text);
             row.getChildren().add(stackPane);
             this.rowHbox= this.rowHbox + 1;
         }
 
-        this.guessContainer.getChildren().add(0,row); // Yeni satırı guessContainer'a ekle
+        this.guessContainer.getChildren().add(0,row); // New row is added to the top of the container
 
         //if all guess is true then show the selected movie
         for(int i = 0; i < equelOrNotList.length; i++){
             if(equelOrNotList[i] == 0){
+                if(movidleService.decreaseHeart()==0){
+                        restartButtonAction("Your haven't any heart!");
+                }
                 break;
             }
             if(i == equelOrNotList.length - 1){
-                restartButtonAction();
+                restartButtonAction("Congralition, You Win!");
             }
         }
+        //if heart is 0 then show the selected movie 
+        
+
     }
 
    
 
-    public void restartButtonAction() {
+    public void restartButtonAction(String message) {
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("INFO");
-        alert.setContentText("Congratulations! You found the movie. Do you want to restart the game?");
+        alert.setContentText(message);
 
         alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 
         ButtonType restartButton = new ButtonType("Restart");
-        ButtonType cancelButton = new ButtonType("Cancel");
 
-        alert.getButtonTypes().setAll(restartButton, cancelButton);
+        alert.getButtonTypes().setAll(restartButton);
 
         alert.showAndWait().ifPresent(buttonType -> {
             if (buttonType == restartButton) {
-                // Restart logic
-                this.selectedMovie = movidleService.selectRandomMovie();
+                // Restart the game
                 guessContainer.getChildren().clear();
-                System.out.println("movie: " + selectedMovie.getTitle());
-            } else if (buttonType == cancelButton) {
-                // Cancel logic
-                System.out.println("Restart cancelled!");
+                startGame();
             }
         });
+    }
+
+    //start or restart the game
+    public void startGame(){
+        movidleService = new MovidleServiceImp();
+        this.selectedMovie = movidleService.selectRandomMovie();
+        
+        System.out.println("movie: " + selectedMovie.getTitle());
     }
 
 

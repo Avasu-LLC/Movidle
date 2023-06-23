@@ -11,6 +11,11 @@ import com.example.movidle.model.Movie;
 import com.example.movidle.service.MovidleService;
 import com.example.movidle.service.imp.MovidleServiceImp;
 
+/**
+ * @author Shamkhal Huseynzade
+ * @author Ali Asim Bulut
+ */
+
 public class MovidleApplication extends Application {
 
 

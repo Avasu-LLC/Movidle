@@ -13,4 +13,6 @@ public interface MovidleService {
 
     public Movie getMovieWithTitle(String title);
 
+    public int decreaseHeart();
+
 }

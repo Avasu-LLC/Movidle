@@ -32,7 +32,7 @@
             <VBox fx:id="guessContainer" spacing="10.0" />
         </content>
     </ScrollPane>
-    <Button text="Restart" onAction="#restartButtonAction" style="-fx-font-size: 16px;" />
+    
   
 
 
