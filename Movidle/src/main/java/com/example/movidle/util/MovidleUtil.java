@@ -12,7 +12,7 @@ import com.example.movidle.model.Movie;
 public class MovidleUtil {
     
     public static List<Movie> readMovies() {
-        String path = "Movidle\\src\\main\\resources\\com\\example\\movidle\\files\\imdb_top_250.csv";
+        String path = "Movidle\\src\\main\\resources\\com\\example\\movidle\\files\\imdb_top_250_3.csv";
         String line = "";
         String[] values;
         List<Movie> movies = new ArrayList<>();
@@ -43,9 +43,6 @@ public class MovidleUtil {
             e.printStackTrace();
         }
 
-        for(Movie movie : movies){
-            System.out.println(movie.getTitle());
-        }
         return movies;
 
     }

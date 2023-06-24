@@ -22,8 +22,11 @@
         <!-- İçerik buraya gelecek -->
     
     <HBox spacing="10.0" alignment = "CENTER">
-        <TextField fx:id="guessTextField" promptText="Enter your guess" style="-fx-font-size: 16px;" />
-        <Button text="Guess" onAction="#guessButtonAction" style="-fx-font-size: 16px;" />
+        <Label text="Guess a letter" style="-fx-font-size: 16px; " />
+    
+        <TextField fx:id="guessTextField"  onKeyTyped="#guessTextFieldOnChange" focusTraversable="false" style="-fx-font-size: 16px;" />
+     
+        <Button focusTraversable="false" text="Guess" onAction="#guessButtonAction" style="-fx-font-size: 16px;" />
     </HBox>
 
     <ScrollPane prefWidth="550" prefHeight="400" vbarPolicy="ALWAYS">

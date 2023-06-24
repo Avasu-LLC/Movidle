@@ -1,9 +1,12 @@
 package com.example.movidle.service.imp;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.example.movidle.model.Movie;
 import com.example.movidle.service.MovidleService;
 import com.example.movidle.util.MovidleUtil;
+
+import javafx.scene.control.TextField;
 
 public class MovidleServiceImp implements MovidleService {
 
@@ -25,12 +28,14 @@ public class MovidleServiceImp implements MovidleService {
     public Movie getMovieWithTitle(String title) {
         for (Movie movie : movies) {
             System.out.println(movie.getTitle());
-            if (movie.getTitle().equals(title)) {
+            if (movie.getTitle().toUpperCase().equals(title.toUpperCase())) {
                 return movie;
             }
         }
         return null;
     }
+
+    
 
     @Override
     public Movie selectRandomMovie() {
@@ -84,6 +89,18 @@ public class MovidleServiceImp implements MovidleService {
         }
 
         return null;
+    }
+
+    @Override
+    public List<String> autoComplete(TextField guessTextField) {
+        List<String> complList = new ArrayList<>();
+        for (Movie movie : movies) {
+            if (movie.getTitle().toUpperCase().startsWith(guessTextField.getText().toUpperCase())) {
+                System.out.println(movie.getTitle());
+                complList.add(movie.getTitle());
+            }
+        }    
+        return complList;
     }
 
 }

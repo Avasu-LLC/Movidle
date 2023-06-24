@@ -1,5 +1,7 @@
 package com.example.movidle.controller;
 
+import java.util.List;
+
 import com.example.movidle.model.Movie;
 import com.example.movidle.service.MovidleService;
 import com.example.movidle.service.imp.MovidleServiceImp;
@@ -8,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
@@ -36,6 +40,28 @@ public class MovidleController {
     public MovidleController() {
      startGame();
 
+    }
+
+   
+    @FXML
+    public void guessTextFieldOnChange() {
+       List<String> complList =  movidleService.autoComplete(guessTextField);
+       System.out.println("complList: " + complList);
+        guessTextField.setPromptText("Guess the movie");
+        if(complList.size() == 0){
+            return;
+        }
+        guessTextField.setOnKeyReleased((KeyEvent e) -> extracted(complList, e));
+
+      
+     }
+
+
+    private void extracted(List<String> complList, KeyEvent e) {
+        
+        if(e.getCode() == KeyCode.TAB ){
+               guessTextField.setText(complList.get(0));
+        }
     }
 
     @FXML
